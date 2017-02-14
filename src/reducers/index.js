@@ -1,10 +1,6 @@
 import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT } from '../actions';
 import Slide from '../models/Slide';
-
-const initialState = {
-    slides: [new Slide()],
-    selectedId: 0
-};
+import initialState from './initialState';
 
 const slidux = (state = initialState, action) => {
     switch (action.type) {
