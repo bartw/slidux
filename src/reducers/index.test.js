@@ -5,14 +5,14 @@ test('given an action with unkown type when slidux then the state is returned un
     const state = { id: Date.now() };
     const action = { type: 'unknown' };
     const newState = slidux(state, action);
-    expect(newState).toEqual(state);
+    expect(newState).toBe(state);
 });
 
 test('given an action with ADD_SLIDE type when slidux then the new state contains a new slide', () => {
     const state = { slides: [] };
     const action = { type: ADD_SLIDE };
     const newState = slidux(state, action);
-    expect(newState.slides.length).toEqual(1);
+    expect(newState.slides.length).toBe(1);
 });
 
 test('given an action with REMOVE_SLIDE type and an existing id when slidux then the new state has the slide with id removed', () => {
@@ -20,7 +20,7 @@ test('given an action with REMOVE_SLIDE type and an existing id when slidux then
     const state = { slides: [{ id: 1 }, { id: idToRemove }, { id: 3 }] };
     const action = { type: REMOVE_SLIDE, id: idToRemove };
     const newState = slidux(state, action);
-    expect(newState.slides.length).toEqual(2);
+    expect(newState.slides.length).toBe(2);
     expect(newState.slides.map(slide => slide.id)).not.toContain(idToRemove);
 });
 
