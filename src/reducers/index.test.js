@@ -46,6 +46,7 @@ test('given an action with UPDATE_NAME type and an existing id when slidux then 
     const state = { slides: [ { id: idToUpdate, name: 'oldName' } ]};
     const action = { type: UPDATE_NAME, id: idToUpdate, name: newName };
     const newState = slidux(state, action);
+    expect(newState.slides[0].id).toBe(idToUpdate);
     expect(newState.slides[0].name).toBe(newName);
 });
 
@@ -64,6 +65,7 @@ test('given an action with UPDATE_CONTENT type and an existing id when slidux th
     const state = { slides: [ { id: idToUpdate, content: 'oldContent' } ]};
     const action = { type: UPDATE_CONTENT, id: idToUpdate, content: newContent };
     const newState = slidux(state, action);
+    expect(newState.slides[0].id).toBe(idToUpdate);
     expect(newState.slides[0].content).toBe(newContent);
 });
 

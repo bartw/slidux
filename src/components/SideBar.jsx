@@ -1,13 +1,13 @@
 import React from 'react';
-import List from './List.jsx';
-import SideBarButtons from './SideBarButtons.jsx';
+import ListContainer from '../containers/ListContainer';
+import SideBarButtonsContainer from '../containers/SideBarButtonsContainer';
 
 export default class SideBar extends React.Component {
   render() {
     return (
       <div>
-          <List />
-          <SideBarButtons />
+          <ListContainer />
+          <SideBarButtonsContainer />
       </div>
     );
   }
