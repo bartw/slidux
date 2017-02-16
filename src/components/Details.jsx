@@ -5,9 +5,11 @@ import EditContainer from '../containers/EditContainer';
 export default class Details extends React.Component {
   render() {
     return (
-      <div>
+      <div id="details">
+        <div id="detailspreview">
           <Preview slide={this.props.slide} />
-          <EditContainer slide={this.props.slide} />
+        </div>
+        <EditContainer slide={this.props.slide} />
       </div>
     );
   }

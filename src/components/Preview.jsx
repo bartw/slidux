@@ -3,7 +3,7 @@ import React from 'react';
 export default class Preview extends React.Component {
   render() {
     return (
-      <div>
+      <div className="preview">
         <div>{this.props.slide.name}</div>
         <div>{this.props.slide.content}</div>
       </div>

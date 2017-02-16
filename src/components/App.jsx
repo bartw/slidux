@@ -5,7 +5,7 @@ import DetailsContainer from '../containers/DetailsContainer';
 export default class App extends React.Component {
     render() {
         return (
-            <div>
+            <div id="app">
                 <SideBar />
                 <DetailsContainer />
             </div>

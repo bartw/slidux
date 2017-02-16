@@ -3,11 +3,11 @@ import React from 'react';
 export default class Edit extends React.Component {
     render() {
         return (
-            <div>
-                <div>
+            <div id="edit">
+                <div className="formgroup">
                     <input type="text" placeholder="Name" value={this.props.slideName} onChange={(e) => this.props.onUpdateName(e.target.value)} />
                 </div>
-                <div>
+                <div className="formgroup">
                     <textarea placeholder="Content" value={this.props.slideContent} onChange={(e) => this.props.onUpdateContent(e.target.value)} />
                 </div>
             </div>

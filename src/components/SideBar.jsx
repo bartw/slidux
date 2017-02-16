@@ -5,7 +5,7 @@ import SideBarButtonsContainer from '../containers/SideBarButtonsContainer';
 export default class SideBar extends React.Component {
   render() {
     return (
-      <div>
+      <div id="sidebar">
           <ListContainer />
           <SideBarButtonsContainer />
       </div>

@@ -5,9 +5,11 @@ export default class List extends React.Component {
   render() {
     const listItems = this.props.slides.map(slide => <ListItemContainer key={slide.id} slide={slide} />);
     return (
-      <ul>
-        {listItems}
-      </ul>
+      <div id="list">
+        <ul>
+          {listItems}
+        </ul>
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 export default class SideBarButtons extends React.Component {
   render() {
     return (
-      <div>
+      <div id="sidebarbuttons">
         <button onClick={e => {
           e.preventDefault();
           this.props.onAdd();
