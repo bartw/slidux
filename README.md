@@ -4,7 +4,7 @@
 
 ## intro
 
-Slidux is a web app to create markdown applications.
+Slidux is a web app to create markdown presentations.
 
 Check it out at https://slidux.surge.sh/. 
 
