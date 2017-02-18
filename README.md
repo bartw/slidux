@@ -2,8 +2,6 @@
 
 ![slidux](logo.png)
 
-# slidux
-
 ## intro
 
 Slidux is a web app to create markdown applications.
