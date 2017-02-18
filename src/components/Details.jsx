@@ -24,7 +24,6 @@ export default class Details extends React.Component {
 Details.propTypes = {
   slide: React.PropTypes.shape({
     id: React.PropTypes.number.isRequired,
-    name: React.PropTypes.string.isOptional,
     content: React.PropTypes.string.isOptional,
   })
 };

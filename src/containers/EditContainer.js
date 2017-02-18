@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { removeSlide, moveUp, moveDown, updateName, updateContent } from '../actions'
+import { removeSlide, moveUp, moveDown, updateContent } from '../actions'
 import Edit from '../components/Edit';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        slideName: ownProps.slide.name,
         slideContent: ownProps.slide.content
     };
 };
@@ -19,9 +18,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         onMoveDown: () => {
             dispatch(moveDown());
-        },
-        onUpdateName: (name) => {
-            dispatch(updateName(name));
         },
         onUpdateContent: (content) => {
             dispatch(updateContent(content));

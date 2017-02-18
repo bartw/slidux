@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT } from '../actions';
 import slidux from '.';
 
 test('given an action with unkown type when slidux then the state is returned unchanged', () => {
@@ -45,33 +45,6 @@ test('given an action with SELECT_SLIDE type and an id when slidux then the new 
     const action = { type: SELECT_SLIDE, id: idToSelect };
     const newState = slidux(state, action);
     expect(newState.selectedId).toBe(idToSelect);
-});
-
-test('given an action with UPDATE_NAME type and an existing selected id when slidux then the new state slide has the updated name', () => {
-    const idToUpdate = 123;
-    const newName = 'newName';
-    const state = { slides: [{ id: idToUpdate, name: 'oldName' }], selectedId: idToUpdate };
-    const action = { type: UPDATE_NAME, name: newName };
-    const newState = slidux(state, action);
-    expect(newState.slides[0].id).toBe(idToUpdate);
-    expect(newState.slides[0].name).toBe(newName);
-});
-
-test('given an action with UPDATE_NAME type and a non existing selected id when slidux then the state is not changed', () => {
-    const idToUpdate = 123;
-    const newName = 'newName';
-    const state = { slides: [{ id: 321, name: 'oldName' }], selectedId: idToUpdate };
-    const action = { type: UPDATE_NAME, name: newName };
-    const newState = slidux(state, action);
-    expect(newState).toEqual(state);
-});
-
-test('given an action with UPDATE_NAME type and no selected id when slidux then the state is not changed', () => {
-    const newName = 'newName';
-    const state = { slides: [{ id: 321, name: 'oldName' }] };
-    const action = { type: UPDATE_NAME, name: newName };
-    const newState = slidux(state, action);
-    expect(newState).toEqual(state);
 });
 
 test('given an action with UPDATE_CONTENT type and an existing selected id when slidux then the new state slide has the updated content', () => {

@@ -17,7 +17,6 @@ export default class List extends React.Component {
 List.propTypes = {
   slides: React.PropTypes.arrayOf(React.PropTypes.shape({
     id: React.PropTypes.number.isRequired,
-    name: React.PropTypes.string.isOptional,
     content: React.PropTypes.string.isOptional,
   })).isRequired
 };
