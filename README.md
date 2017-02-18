@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bartw/slidux.svg?branch=master)](https://travis-ci.org/bartw/slidux)
+
 # slidux
 
 ## quickstart
