@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress -d --colors --content-base ./public",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:once": "jest"
   },
   "author": "Bart Wijnants",
   "license": "MIT",

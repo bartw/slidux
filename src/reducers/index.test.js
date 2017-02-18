@@ -161,9 +161,9 @@ test('given an action with OPEN_EXPORT type and no slides when slidux then expor
     expect(newState.exported).toEqual('');
 });
 
-test('given an action with CLOSE_EXPORT type when slidux then exported null', () => {
+test('given an action with CLOSE_EXPORT type when slidux then exported is cleared', () => {
     const state = { };
     const action = { type: CLOSE_EXPORT };
     const newState = slidux(state, action);
-    expect(newState.exported).toEqual(null);
+    expect(newState.exported).toEqual('');
 });
