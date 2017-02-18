@@ -13,6 +13,14 @@ export default class Edit extends React.Component {
                 <div className="formgroup">
                     <button onClick={e => {
                         e.preventDefault();
+                        this.props.onMoveUp();
+                    }}>Move up</button>
+                    <button onClick={e => {
+                        e.preventDefault();
+                        this.props.onMoveDown();
+                    }}>Move down</button>
+                    <button onClick={e => {
+                        e.preventDefault();
                         this.props.onRemove();
                     }}>Remove</button>
                 </div>
@@ -25,6 +33,8 @@ Edit.propTypes = {
     slideName: React.PropTypes.string,
     slideContent: React.PropTypes.string,
     onRemove: React.PropTypes.func.isRequired,
+    onMoveUp: React.PropTypes.func.isRequired,
+    onMoveDown: React.PropTypes.func.isRequired,
     onUpdateName: React.PropTypes.func.isRequired,
     onUpdateContent: React.PropTypes.func.isRequired
 };

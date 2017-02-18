@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { removeSlide, updateName, updateContent } from '../actions'
+import { removeSlide, moveUp, moveDown, updateName, updateContent } from '../actions'
 import Edit from '../components/Edit';
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,13 +12,19 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onRemove: () => {
-            dispatch(removeSlide(ownProps.slide.id));
+            dispatch(removeSlide());
+        },
+        onMoveUp: () => {
+            dispatch(moveUp());
+        },
+        onMoveDown: () => {
+            dispatch(moveDown());
         },
         onUpdateName: (name) => {
-            dispatch(updateName(ownProps.slide.id, name));
+            dispatch(updateName(name));
         },
         onUpdateContent: (content) => {
-            dispatch(updateContent(ownProps.slide.id, content));
+            dispatch(updateContent(content));
         }
     }
 }

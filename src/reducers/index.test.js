@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN } from '../actions';
 import slidux from '.';
 
 test('given an action with unkown type when slidux then the state is returned unchanged', () => {
@@ -15,19 +15,26 @@ test('given an action with ADD_SLIDE type when slidux then the new state contain
     expect(newState.slides.length).toBe(1);
 });
 
-test('given an action with REMOVE_SLIDE type and an existing id when slidux then the new state has the slide with id removed', () => {
+test('given an action with REMOVE_SLIDE type and an existing selected id when slidux then the new state has the slide with id removed', () => {
     const idToRemove = 2;
-    const state = { slides: [{ id: 1 }, { id: idToRemove }, { id: 3 }] };
-    const action = { type: REMOVE_SLIDE, id: idToRemove };
+    const state = { slides: [{ id: 1 }, { id: idToRemove }, { id: 3 }], selectedId: idToRemove };
+    const action = { type: REMOVE_SLIDE };
     const newState = slidux(state, action);
     expect(newState.slides.length).toBe(2);
     expect(newState.slides.map(slide => slide.id)).not.toContain(idToRemove);
 });
 
-test('given an action with REMOVE_SLIDE type and a non existing id when slidux then the state is not changed', () => {
+test('given an action with REMOVE_SLIDE type and a non existing selected id when slidux then the state is not changed', () => {
     const idToRemove = 123;
+    const state = { slides: [{ id: 1 }, { id: 3 }], selectedId: idToRemove };
+    const action = { type: REMOVE_SLIDE };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with REMOVE_SLIDE type and no selected id when slidux then the state is not changed', () => {
     const state = { slides: [{ id: 1 }, { id: 3 }] };
-    const action = { type: REMOVE_SLIDE, id: idToRemove };
+    const action = { type: REMOVE_SLIDE };
     const newState = slidux(state, action);
     expect(newState).toEqual(state);
 });
@@ -40,40 +47,118 @@ test('given an action with SELECT_SLIDE type and an id when slidux then the new 
     expect(newState.selectedId).toBe(idToSelect);
 });
 
-test('given an action with UPDATE_NAME type and an existing id when slidux then the new state slide has the updated name', () => {
+test('given an action with UPDATE_NAME type and an existing selected id when slidux then the new state slide has the updated name', () => {
     const idToUpdate = 123;
     const newName = 'newName';
-    const state = { slides: [ { id: idToUpdate, name: 'oldName' } ]};
-    const action = { type: UPDATE_NAME, id: idToUpdate, name: newName };
+    const state = { slides: [{ id: idToUpdate, name: 'oldName' }], selectedId: idToUpdate };
+    const action = { type: UPDATE_NAME, name: newName };
     const newState = slidux(state, action);
     expect(newState.slides[0].id).toBe(idToUpdate);
     expect(newState.slides[0].name).toBe(newName);
 });
 
-test('given an action with UPDATE_NAME type and a non existing id when slidux then the state is not changed', () => {
+test('given an action with UPDATE_NAME type and a non existing selected id when slidux then the state is not changed', () => {
     const idToUpdate = 123;
     const newName = 'newName';
-    const state = { slides: [ { id: 321, name: 'oldName' } ]};
-    const action = { type: UPDATE_NAME, id: idToUpdate, name: newName };
+    const state = { slides: [{ id: 321, name: 'oldName' }], selectedId: idToUpdate };
+    const action = { type: UPDATE_NAME, name: newName };
     const newState = slidux(state, action);
     expect(newState).toEqual(state);
 });
 
-test('given an action with UPDATE_CONTENT type and an existing id when slidux then the new state slide has the updated content', () => {
+test('given an action with UPDATE_NAME type and no selected id when slidux then the state is not changed', () => {
+    const newName = 'newName';
+    const state = { slides: [{ id: 321, name: 'oldName' }] };
+    const action = { type: UPDATE_NAME, name: newName };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with UPDATE_CONTENT type and an existing selected id when slidux then the new state slide has the updated content', () => {
     const idToUpdate = 123;
     const newContent = 'newContent';
-    const state = { slides: [ { id: idToUpdate, content: 'oldContent' } ]};
-    const action = { type: UPDATE_CONTENT, id: idToUpdate, content: newContent };
+    const state = { slides: [{ id: idToUpdate, content: 'oldContent' }], selectedId: idToUpdate };
+    const action = { type: UPDATE_CONTENT, content: newContent };
     const newState = slidux(state, action);
     expect(newState.slides[0].id).toBe(idToUpdate);
     expect(newState.slides[0].content).toBe(newContent);
 });
 
-test('given an action with UPDATE_CONTENT type and a non existing id when slidux then the state is not changed', () => {
+test('given an action with UPDATE_CONTENT type and a non existing selected id when slidux then the state is not changed', () => {
     const idToUpdate = 123;
     const newContent = 'newContent';
-    const state = { slides: [ { id: 321, content: 'oldContent' } ]};
-    const action = { type: UPDATE_CONTENT, id: idToUpdate, content: newContent };
+    const state = { slides: [{ id: 321, content: 'oldContent' }], selectedId: idToUpdate };
+    const action = { type: UPDATE_CONTENT, content: newContent };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with UPDATE_CONTENT type and no selected id when slidux then the state is not changed', () => {
+    const newContent = 'newContent';
+    const state = { slides: [{ id: 321, content: 'oldContent' }] };
+    const action = { type: UPDATE_CONTENT, content: newContent };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_UP type and an existing selected id when slidux then the new state moves the slide up', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: 1 }, { id: 2 }, { id: idToMove }, { id: 4 }], selectedId: idToMove };
+    const action = { type: MOVE_UP };
+    const newState = slidux(state, action);
+    expect(newState.slides[1].id).toBe(idToMove);
+});
+
+test('given an action with MOVE_UP type and an existing selected id that is already on the first position when slidux then the state is not changed', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: idToMove }, { id: 1 }, { id: 2 }, { id: 4 }], selectedId: idToMove };
+    const action = { type: MOVE_UP };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_UP type and a non existing selected id when slidux then the state is not changed', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: 321 }], selectedId: idToMove };
+    const action = { type: MOVE_UP };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_UP type and no selected id when slidux then the state is not changed', () => {
+    const state = { slides: [{ id: 321 }] };
+    const action = { type: MOVE_UP };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_DOWN type and an existing selected id when slidux then the new state moves the slide down', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: 1 }, { id: idToMove }, { id: 3 }, { id: 4 }], selectedId: idToMove };
+    const action = { type: MOVE_DOWN };
+    const newState = slidux(state, action);
+    expect(newState.slides[2].id).toBe(idToMove);
+});
+
+test('given an action with MOVE_DOWN type and an existing selected id that is already on the last position when slidux then the state is not changed', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: idToMove }], selectedId: idToMove };
+    const action = { type: MOVE_DOWN };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_DOWN type and a non existing selected id when slidux then the state is not changed', () => {
+    const idToMove = 123;
+    const state = { slides: [{ id: 321 }], selectedId: idToMove };
+    const action = { type: MOVE_DOWN };
+    const newState = slidux(state, action);
+    expect(newState).toEqual(state);
+});
+
+test('given an action with MOVE_DOWN type and no selected id when slidux then the state is not changed', () => {
+    const state = { slides: [{ id: 321 }] };
+    const action = { type: MOVE_DOWN };
     const newState = slidux(state, action);
     expect(newState).toEqual(state);
 });
