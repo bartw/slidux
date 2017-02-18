@@ -1,11 +1,17 @@
 import React from 'react';
+import showdown from 'showdown';
 
 export default class Preview extends React.Component {
+  constructor(props) {
+    super(props);
+    this.converter = new showdown.Converter();
+  }
   render() {
+    const slideHtml = { __html: this.converter.makeHtml(this.props.slide.content) };
     return (
       <div className="preview">
         <div>{this.props.slide.name}</div>
-        <div>{this.props.slide.content}</div>
+        <div className="content" dangerouslySetInnerHTML={slideHtml} />
       </div>
     );
   }
