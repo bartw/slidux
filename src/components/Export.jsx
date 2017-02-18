@@ -12,10 +12,10 @@ export default class Export extends React.Component {
                                 <textarea readOnly value={this.props.exported} />
                             </div>
                             <div className="formgroup">
-                                <input type="text" placeholder="Username" value={this.props.username} onChange={(e) => this.props.onUpdateUsername(e.target.value)} />
+                                <input type="text" placeholder="GitHub Username" value={this.props.username} onChange={(e) => this.props.onUpdateUsername(e.target.value)} />
                             </div>
                             <div className="formgroup">
-                                <input type="password" placeholder="Password" value={this.props.password} onChange={(e) => this.props.onUpdatePassword(e.target.value)} />
+                                <input type="password" placeholder="GitHub Password" value={this.props.password} onChange={(e) => this.props.onUpdatePassword(e.target.value)} />
                             </div>
                             <div className="formgroup">
                                 <input type="text" placeholder="Gist url" value={this.props.gistUrl} readOnly />

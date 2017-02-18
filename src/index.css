@@ -20,6 +20,7 @@ body, input, textarea, button {
     flex-direction: column;
     height: 100%;
     width: 400px;
+    border-right: 3px solid black;
 }
 
 #list {
@@ -43,6 +44,12 @@ body, input, textarea, button {
 
 #sidebarbuttons {
     padding: 20px;
+    border-top: 3px solid black;
+}
+
+#header {
+    padding: 20px;
+    border-bottom: 3px solid black;
 }
 
 #detailscontainer {
@@ -61,10 +68,11 @@ body, input, textarea, button {
     flex-grow: 1;
     padding: 0 20px;
     overflow: hidden;
+    border-bottom: 3px solid black;
 }
 
 #edit {
-    padding: 0 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .formgroup {
