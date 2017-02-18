@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT } from '../actions';
 import slidux from '.';
 
 test('given an action with unkown type when slidux then the state is returned unchanged', () => {
@@ -161,4 +161,36 @@ test('given an action with MOVE_DOWN type and no selected id when slidux then th
     const action = { type: MOVE_DOWN };
     const newState = slidux(state, action);
     expect(newState).toEqual(state);
+});
+
+test('given an action with OPEN_EXPORT type and one slide when slidux then exported is filled in correctly', () => {
+    const expectedExported = 'content';
+    const state = { slides: [{ content: expectedExported }] };
+    const action = { type: OPEN_EXPORT };
+    const newState = slidux(state, action);
+    expect(newState.exported).toEqual(expectedExported);
+});
+
+test('given an action with OPEN_EXPORT type and multiple slides when slidux then exported is filled in correctly', () => {
+    const content1 = 'content1';
+    const content2 = 'content2';
+    const expectedExported = content1 + '\n\n----------\n\n' + content2;
+    const state = { slides: [{ content: content1 }, { content: content2 }] };
+    const action = { type: OPEN_EXPORT };
+    const newState = slidux(state, action);
+    expect(newState.exported).toEqual(expectedExported);
+});
+
+test('given an action with OPEN_EXPORT type and no slides when slidux then exported is filled in correctly', () => {
+    const state = { slides: [] };
+    const action = { type: OPEN_EXPORT };
+    const newState = slidux(state, action);
+    expect(newState.exported).toEqual('');
+});
+
+test('given an action with CLOSE_EXPORT type when slidux then exported null', () => {
+    const state = { };
+    const action = { type: CLOSE_EXPORT };
+    const newState = slidux(state, action);
+    expect(newState.exported).toEqual(null);
 });

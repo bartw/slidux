@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_NAME, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT } from '../actions';
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
@@ -18,6 +18,10 @@ const slidux = (state = initialState, action) => {
             return { ...state, slides: move(state.selectedId, state.slides, -1) };
         case MOVE_DOWN:
             return { ...state, slides: move(state.selectedId, state.slides, 1) };
+        case OPEN_EXPORT:
+            return { ...state, exported: state.slides.map(slide => slide.content).join('\n\n----------\n\n') };
+        case CLOSE_EXPORT:
+            return { ...state, exported: null };
         default:
             return state;
     }
