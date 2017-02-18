@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --progress -d --colors --content-base ./public",
     "test": "jest --watch",
-    "test:once": "jest"
+    "test:once": "jest",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "author": "Bart Wijnants",
   "license": "MIT",
