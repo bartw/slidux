@@ -97,3 +97,30 @@ textarea {
 #sidebar .preview .content {
     font-size: 0.5rem;
 }
+
+#export {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#export > div {
+    width: 75%;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#export textarea {
+    height: 400px;
+    margin-bottom: 10px;
+}

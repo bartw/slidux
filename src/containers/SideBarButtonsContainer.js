@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addSlide } from '../actions'
+import { addSlide, openExport } from '../actions'
 import SideBarButtons from '../components/SideBarButtons';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,6 +10,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onAdd: () => {
             dispatch(addSlide());
+        },
+        onExport: () => {
+            dispatch(openExport());
         }
     }
 }
