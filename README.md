@@ -12,10 +12,34 @@ Check it out at https://slidux.surge.sh/.
 
 ```shell
 git clone https://github.com/bartw/slidux
+cd slidux
 npm install
+```
+
+Run and watch the tests.
+
+```shell
 npm test
+```
+
+Run the tests once.
+
+```shell
+npm run test:once
+```
+
+Start and watch the app.
+
+```shell
 npm start
 ```
+
+Production build, after the build, all the files you need to deploy are in the public folder.
+
+```shell
+npm run build
+```
+
 
 ## kudos
 
