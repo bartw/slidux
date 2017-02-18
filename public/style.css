@@ -34,8 +34,12 @@ body, input, textarea, button {
 }
 
 #sidebarbuttons {
-    height: 100px;
-    min-height: 100px;
+    padding: 20px;
+}
+
+#detailscontainer {
+    height: 100%;
+    width: 100%;
 }
 
 #details {
@@ -52,13 +56,17 @@ body, input, textarea, button {
 }
 
 #edit {
-    height: 300px;
     padding: 0 20px;
 }
 
 .formgroup {
     width: 100%;
     margin-bottom: 20px;
+}
+
+button {
+    margin: 0;
+    padding: 5px;
 }
 
 input, textarea {

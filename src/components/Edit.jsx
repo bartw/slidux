@@ -10,6 +10,12 @@ export default class Edit extends React.Component {
                 <div className="formgroup">
                     <textarea placeholder="Content" value={this.props.slideContent} onChange={(e) => this.props.onUpdateContent(e.target.value)} />
                 </div>
+                <div className="formgroup">
+                    <button onClick={e => {
+                        e.preventDefault();
+                        this.props.onRemove();
+                    }}>Remove</button>
+                </div>
             </div>
         );
     }
