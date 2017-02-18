@@ -4,7 +4,10 @@ const initialState = (() => {
     const slide = new Slide();
     return {
         slides: [slide],
-        selectedId: slide.id
+        selectedId: slide.id,
+        username: '',
+        password: '',
+        gistUrl: ''
     }
 })();
 

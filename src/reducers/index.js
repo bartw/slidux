@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY } from '../actions';
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
@@ -19,7 +19,13 @@ const slidux = (state = initialState, action) => {
         case OPEN_EXPORT:
             return { ...state, exported: state.slides.map(slide => slide.content).join('\n\n----------\n\n') };
         case CLOSE_EXPORT:
-            return { ...state, exported: null };
+            return { ...state, exported: '', username: '', password: '', gistUrl: '' };
+        case UPDATE_USERNAME:
+            return { ...state, username: action.username };
+        case UPDATE_PASSWORD:
+            return { ...state, password: action.password };
+        case CREATE_GIST_NOTIFY:
+            return { ...state, gistUrl: action.gistUrl };
         default:
             return state;
     }

@@ -1,3 +1,5 @@
+import GitHub from 'github-api';
+
 export const ADD_SLIDE = 'ADD_SLIDE';
 export const REMOVE_SLIDE = 'REMOVE_SLIDE';
 export const SELECT_SLIDE = 'SELECT_SLIDE';
@@ -6,6 +8,9 @@ export const MOVE_UP = 'MOVE_UP';
 export const MOVE_DOWN = 'MOVE_DOWN';
 export const OPEN_EXPORT = 'OPEN_EXPORT';
 export const CLOSE_EXPORT = 'CLOSE_EXPORT';
+export const UPDATE_USERNAME = 'UPDATE_USERNAME';
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const CREATE_GIST_NOTIFY = 'CREATE_GIST_NOTIFY';
 
 export const addSlide = () => ({ type: ADD_SLIDE });
 export const removeSlide = () => ({ type: REMOVE_SLIDE });
@@ -15,3 +20,34 @@ export const moveUp = () => ({ type: MOVE_UP });
 export const moveDown = () => ({ type: MOVE_DOWN });
 export const openExport = () => ({ type: OPEN_EXPORT });
 export const closeExport = () => ({ type: CLOSE_EXPORT });
+export const updateUsername = (username) => ({ type: UPDATE_USERNAME, username: username });
+export const updatePassword = (password) => ({ type: UPDATE_PASSWORD, password: password });
+const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
+export const createGist = () => {
+    return (dispatch, getState) => {
+        const state = getState();
+        if (!state.username || !state.password || !state.exported) {
+            dispatch(createGistNotify('please provide all parameters'));
+            return;
+        }
+        const gh = new GitHub({
+            username: state.username,
+            password: state.password
+        });
+        let gist = gh.getGist();
+        gist.create({
+            public: true,
+            description: 'My first gist',
+            files: {
+                "file1.txt": {
+                    content: state.exported
+                }
+            }
+        }).then(data => {
+            dispatch(createGistNotify(data.data.files[Object.keys(data.data.files)[0]].raw_url));
+            console.log(data);
+        }).catch(error => {
+            dispatch(createGistNotify('error'));
+        });
+    };
+};
