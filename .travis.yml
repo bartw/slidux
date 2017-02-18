@@ -10,5 +10,5 @@ script:
 deploy:
   provider: surge
   project: ./public/
-  domain: slidux.surge.sh
+  domain: https://slidux.surge.sh
   skip_cleanup: true
