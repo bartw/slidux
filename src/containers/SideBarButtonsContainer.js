@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addSlide, openExport, switchTheme, startPresentation } from '../actions';
+import { addSlide, openExport, switchTheme, startPresentation, clear } from '../actions';
 import SideBarButtons from '../components/SideBarButtons';
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onStartPresentation: () => {
             dispatch(startPresentation());
+        },
+        onClear: () => {
+            dispatch(clear());
         }
     }
 }

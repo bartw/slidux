@@ -16,6 +16,7 @@ export const START_PRESENTATION = 'START_PRESENTATION';
 export const STOP_PRESENTATION = 'STOP_PRESENTATION';
 export const PREVIOUS_SLIDE = 'PREVIOUS_SLIDE';
 export const NEXT_SLIDE = 'NEXT_SLIDE';
+export const CLEAR = 'CLEAR';
 
 export const addSlide = () => ({ type: ADD_SLIDE });
 export const removeSlide = () => ({ type: REMOVE_SLIDE });
@@ -32,6 +33,7 @@ export const startPresentation = () => ({ type: START_PRESENTATION });
 export const stopPresentation = () => ({ type: STOP_PRESENTATION });
 export const previousSlide = () => ({ type: PREVIOUS_SLIDE });
 export const nextSlide = () => ({ type: NEXT_SLIDE });
+export const clear = () => ({ type: CLEAR });
 const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
 export const createGist = () => {
     return (dispatch, getState) => {
