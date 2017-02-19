@@ -6,7 +6,7 @@ import DetailsContainer from '../containers/DetailsContainer';
 export default class App extends React.Component {
     render() {
         return (
-            <div id="app">
+            <div id="app" className={this.props.isDark ? 'dark' : ''}>
                 <ExportContainer />
                 <SideBar />
                 <DetailsContainer />
@@ -14,3 +14,7 @@ export default class App extends React.Component {
         );
     }
 }
+
+App.propTypes = {
+    isDark: React.PropTypes.bool
+};

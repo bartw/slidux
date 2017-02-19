@@ -12,6 +12,10 @@ export default class SideBarButtons extends React.Component {
           e.preventDefault();
           this.props.onExport();
         }}>Export</button>
+        <button onClick={e => {
+          e.preventDefault();
+          this.props.onSwitchTheme();
+        }}>Switch theme</button>
       </div>
     );
   }
@@ -19,5 +23,6 @@ export default class SideBarButtons extends React.Component {
 
 SideBarButtons.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
-  onExport: React.PropTypes.func.isRequired
+  onExport: React.PropTypes.func.isRequired,
+  onSwitchTheme: React.PropTypes.func.isRequired
 };

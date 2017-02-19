@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addSlide, openExport } from '../actions'
+import { addSlide, openExport, switchTheme } from '../actions';
 import SideBarButtons from '../components/SideBarButtons';
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onExport: () => {
             dispatch(openExport());
+        },
+        onSwitchTheme: () => {
+            dispatch(switchTheme());
         }
     }
 }

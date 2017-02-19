@@ -7,7 +7,8 @@ const initialState = (() => {
         selectedId: slide.id,
         username: '',
         password: '',
-        gistUrl: ''
+        gistUrl: '',
+        isDark: true
     }
 })();
 

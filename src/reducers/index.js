@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY, SWITCH_THEME } from '../actions';
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
@@ -26,6 +26,8 @@ const slidux = (state = initialState, action) => {
             return { ...state, password: action.password };
         case CREATE_GIST_NOTIFY:
             return { ...state, gistUrl: action.gistUrl };
+        case SWITCH_THEME:
+            return { ...state, isDark: !state.isDark };
         default:
             return state;
     }

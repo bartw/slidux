@@ -11,6 +11,7 @@ export const CLOSE_EXPORT = 'CLOSE_EXPORT';
 export const UPDATE_USERNAME = 'UPDATE_USERNAME';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 export const CREATE_GIST_NOTIFY = 'CREATE_GIST_NOTIFY';
+export const SWITCH_THEME = 'SWITCH_THEME';
 
 export const addSlide = () => ({ type: ADD_SLIDE });
 export const removeSlide = () => ({ type: REMOVE_SLIDE });
@@ -22,6 +23,7 @@ export const openExport = () => ({ type: OPEN_EXPORT });
 export const closeExport = () => ({ type: CLOSE_EXPORT });
 export const updateUsername = (username) => ({ type: UPDATE_USERNAME, username: username });
 export const updatePassword = (password) => ({ type: UPDATE_PASSWORD, password: password });
+export const switchTheme = () => ({ type: SWITCH_THEME });
 const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
 export const createGist = () => {
     return (dispatch, getState) => {
