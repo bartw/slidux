@@ -4,7 +4,7 @@ import Presentation from '../components/Presentation';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        slide: state.slides[state.currentIndex]
+        slide: state.slides.length > state.currentIndex ? state.slides[state.currentIndex] : null
     };
 };
 

@@ -5,7 +5,7 @@ export default class Presentation extends React.Component {
     render() {
         return (
             <div id="presentation">
-                <Preview slide={this.props.slide} />
+                {this.props.slide && <Preview slide={this.props.slide} />}
                 <div id="presentationButtons">
                     <button onClick={e => {
                         e.preventDefault();

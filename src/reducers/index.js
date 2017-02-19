@@ -5,7 +5,8 @@ import initialState from './initialState';
 const slidux = (state = initialState, action) => {
     switch (action.type) {
         case ADD_SLIDE:
-            return { ...state, slides: state.slides.concat(new Slide()) };
+            const newSlide = new Slide();
+            return { ...state, slides: state.slides.concat(newSlide), selectedId: newSlide.id };
         case REMOVE_SLIDE:
             return { ...state, slides: state.slides.filter(slide => slide.id !== state.selectedId) };
         case SELECT_SLIDE:
@@ -29,7 +30,7 @@ const slidux = (state = initialState, action) => {
         case SWITCH_THEME:
             return { ...state, isDark: !state.isDark };
         case START_PRESENTATION:
-            return { ...state, showPresentation: true };
+            return { ...state, showPresentation: true, currentIndex: 0 };
         case STOP_PRESENTATION:
             return { ...state, showPresentation: false };
         case PREVIOUS_SLIDE:
