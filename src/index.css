@@ -52,6 +52,10 @@ a {
     border-top: 5px solid #2A7451;
 }
 
+#sidebarbuttons div:first-child {
+    margin-bottom: 10px;
+}
+
 #header {
     padding: 20px;
     border-bottom: 5px solid #2A7451;
@@ -114,6 +118,10 @@ textarea {
     resize: none;
 }
 
+#presentation .preview .content {
+    font-size: 3rem;
+}
+
 #details .preview .content {
     font-size: 3rem;
 }
@@ -149,8 +157,26 @@ textarea {
     margin-bottom: 10px;
 }
 
+#presentation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
 
-#app.dark, #app.dark a, #app.dark textarea, #app.dark input, #app.dark #export > div {
+#presentation .preview {
+    flex-grow: 1;
+}
+
+#app.dark, #app.dark a, #app.dark textarea, #app.dark input, #app.dark #export > div, #app.dark #presentation {
     background-color: #252526;
     color: rgba(255, 255, 255, 0.74902);
 }

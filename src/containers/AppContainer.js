@@ -3,7 +3,8 @@ import App from '../components/App';
 
 const mapStateToProps = (state) => {
     return {
-        isDark: state.isDark
+        isDark: state.isDark,
+        showPresentation: state.showPresentation
     };
 };
 

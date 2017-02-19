@@ -8,7 +8,9 @@ const initialState = (() => {
         username: '',
         password: '',
         gistUrl: '',
-        isDark: true
+        isDark: true,
+        showPresentation: false,
+        currentIndex: 0
     }
 })();
 

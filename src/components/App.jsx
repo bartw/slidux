@@ -2,6 +2,7 @@ import React from 'react';
 import ExportContainer from '../containers/ExportContainer';
 import SideBar from './SideBar.jsx';
 import DetailsContainer from '../containers/DetailsContainer';
+import PresentationContainer from '../containers/PresentationContainer';
 
 export default class App extends React.Component {
     render() {
@@ -10,11 +11,13 @@ export default class App extends React.Component {
                 <ExportContainer />
                 <SideBar />
                 <DetailsContainer />
+                {this.props.showPresentation && <PresentationContainer />}
             </div>
         );
     }
 }
 
 App.propTypes = {
-    isDark: React.PropTypes.bool
+    isDark: React.PropTypes.bool,
+    showPresentation: React.PropTypes.bool
 };

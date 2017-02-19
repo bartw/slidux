@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY, SWITCH_THEME } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY, SWITCH_THEME, START_PRESENTATION, STOP_PRESENTATION, PREVIOUS_SLIDE, NEXT_SLIDE } from '../actions';
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
@@ -28,6 +28,14 @@ const slidux = (state = initialState, action) => {
             return { ...state, gistUrl: action.gistUrl };
         case SWITCH_THEME:
             return { ...state, isDark: !state.isDark };
+        case START_PRESENTATION:
+            return { ...state, showPresentation: true };
+        case STOP_PRESENTATION:
+            return { ...state, showPresentation: false };
+        case PREVIOUS_SLIDE:
+            return { ...state, currentIndex: state.currentIndex > 0 ? state.currentIndex - 1 : state.currentIndex };
+        case NEXT_SLIDE:
+            return { ...state, currentIndex: state.currentIndex < state.slides.length - 1 ? state.currentIndex + 1 : state.currentIndex };        
         default:
             return state;
     }
