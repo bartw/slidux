@@ -25,7 +25,7 @@ a {
     flex-direction: column;
     height: 100%;
     width: 400px;
-    border-right: 3px solid black;
+    border-right: 5px solid #2A7451;
 }
 
 #list {
@@ -43,18 +43,18 @@ a {
     height: 100px;
     min-height: 100px;
     overflow: hidden;
-    border-bottom: 1px solid black;
+    border-bottom: 5px solid #2A7451;
     padding: 5px;
 }
 
 #sidebarbuttons {
     padding: 20px;
-    border-top: 3px solid black;
+    border-top: 5px solid #2A7451;
 }
 
 #header {
     padding: 20px;
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid #2A7451;
 }
 
 #detailscontainer {
@@ -73,7 +73,7 @@ a {
     flex-grow: 1;
     padding: 0 20px;
     overflow: hidden;
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid #2A7451;
 }
 
 #edit {
@@ -87,8 +87,19 @@ a {
 
 button {
     margin: 0;
-    padding: 5px;
+    padding: 10px;
     margin-right: 10px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: #2A7451;
+    color: white;
+}
+
+button:hover {
+    background-color: #AACBB5;
+    color: #2A7451;
 }
 
 input, textarea {
@@ -119,7 +130,7 @@ textarea {
     bottom: 0;
     left: 0;
     z-index: 999;
-    margin: 20px;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +141,7 @@ textarea {
     padding: 50px;
     box-sizing: border-box;
     background-color: white;
-    border: 1px solid black;
+    border: 5px solid #2A7451;
 }
 
 #export textarea {
