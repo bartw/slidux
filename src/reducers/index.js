@@ -1,4 +1,4 @@
-import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY, SWITCH_THEME, START_PRESENTATION, STOP_PRESENTATION, PREVIOUS_SLIDE, NEXT_SLIDE, CLEAR } from '../actions';
+import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DOWN, OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY, SWITCH_THEME, START_PRESENTATION, STOP_PRESENTATION, PREVIOUS_SLIDE, NEXT_SLIDE, CLEAR, IMPORT_SLIDES_NOTIFY, UPDATE_IMPORT_URL } from '../actions';
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
@@ -39,6 +39,14 @@ const slidux = (state = initialState, action) => {
             return { ...state, currentIndex: state.currentIndex < state.slides.length - 1 ? state.currentIndex + 1 : state.currentIndex };
         case CLEAR:
             return { ...initialState };
+        case CREATE_GIST_NOTIFY:
+            if (!action.text) {
+                return { ...initialState };
+            }
+            const slides = action.text.split('\n\n----------\n\n').map((slide, index) => ({ id: index, content: slide }));
+            return { ...initialState, slides: slides };
+        case UPDATE_IMPORT_URL:
+            return { ...state, importUrl: action.importUrl };
         default:
             return state;
     }

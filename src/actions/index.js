@@ -17,6 +17,8 @@ export const STOP_PRESENTATION = 'STOP_PRESENTATION';
 export const PREVIOUS_SLIDE = 'PREVIOUS_SLIDE';
 export const NEXT_SLIDE = 'NEXT_SLIDE';
 export const CLEAR = 'CLEAR';
+export const IMPORT_SLIDES_NOTIFY = 'IMPORT_SLIDES_NOTIFY';
+export const UPDATE_IMPORT_URL = 'UPDATE_IMPORT_URL';
 
 export const addSlide = () => ({ type: ADD_SLIDE });
 export const removeSlide = () => ({ type: REMOVE_SLIDE });
@@ -34,6 +36,7 @@ export const stopPresentation = () => ({ type: STOP_PRESENTATION });
 export const previousSlide = () => ({ type: PREVIOUS_SLIDE });
 export const nextSlide = () => ({ type: NEXT_SLIDE });
 export const clear = () => ({ type: CLEAR });
+export const updateImportUrl = (importUrl) => ({ type: UPDATE_IMPORT_URL, importUrl: importUrl });
 const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
 export const createGist = () => {
     return (dispatch, getState) => {
@@ -61,5 +64,16 @@ export const createGist = () => {
         }).catch(error => {
             dispatch(createGistNotify('error'));
         });
+    };
+};
+const importSlidesNotify = (text) => ({ type: IMPORT_SLIDES_NOTIFY, text: text });
+export const importSlides = () => {
+    return (dispatch, getState) => {
+        const state = getState();
+        if (!state.importUrl) {
+            dispatch(importSlidesNotify());
+            return;
+        }
+        fetch(state.importUrl, { mode: 'cors' }).then(response => dispatch(importSlidesNotify(response.text()))).catch(() => dispatch(importSlidesNotify()));
     };
 };
