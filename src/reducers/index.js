@@ -30,13 +30,25 @@ const slidux = (state = initialState, action) => {
         case SWITCH_THEME:
             return { ...state, isDark: !state.isDark };
         case START_PRESENTATION:
-            return { ...state, showPresentation: true, currentIndex: 0 };
+            {
+                const presentation = state.presentation;
+                return { ...state, presentation: { ...presentation, show: true, currentIndex: 0 } };
+            }
         case STOP_PRESENTATION:
-            return { ...state, showPresentation: false };
+            {
+                const presentation = state.presentation;
+                return { ...state, presentation: { ...presentation, show: false } };
+            }
         case PREVIOUS_SLIDE:
-            return { ...state, currentIndex: state.currentIndex > 0 ? state.currentIndex - 1 : state.currentIndex };
+            {
+                const presentation = state.presentation;
+                return { ...state, presentation: { ...presentation, currentIndex: presentation.currentIndex > 0 ? presentation.currentIndex - 1 : presentation.currentIndex } };
+            }
         case NEXT_SLIDE:
-            return { ...state, currentIndex: state.currentIndex < state.slides.length - 1 ? state.currentIndex + 1 : state.currentIndex };
+            {
+                const presentation = state.presentation;
+                return { ...state, presentation: { ...presentation, currentIndex: presentation.currentIndex < state.slides.length - 1 ? presentation.currentIndex + 1 : presentation.currentIndex } };
+            }
         case CLEAR:
             return { ...initialState };
         case CREATE_GIST_NOTIFY:
