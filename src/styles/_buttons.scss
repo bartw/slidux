@@ -1,0 +1,32 @@
+.btn{
+    display: block;
+    text-align: center;
+    border-radius: 3px;
+    padding: 4px 12px;
+    border: 0;
+}
+
+.btn-primary{
+    background-color: $primary-bg-color;
+    color: $primary-color;
+
+    &:hover{
+        background-color: $primary-bg-color-hover;
+        color: $primary-color-hover;
+    }
+}
+
+.btn-secondary{
+    background-color: $secondary-bg-color;
+    color: $secondary-color;
+
+    &:hover{
+        background-color: $secondary-bg-color-hover;
+        color: $secondary-color-hover;
+    }
+}
+
+.btn-link{
+    background-color: inherit;
+    color: $link-color;
+}
