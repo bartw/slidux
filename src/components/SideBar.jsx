@@ -6,8 +6,8 @@ export default class SideBar extends React.Component {
   render() {
     return (
       <div id="sidebar">
-        <div id="header">
-          <img src="logo.png" alt="slidux" />
+        <div id="header">          
+          <img src={this.props.isDark ? "assets/logo-dark.png" : "assets/logo.png"} alt="slidux" />
           <h3>By <a href="https://bartw.github.io/" target="_blank">Bart Wijnants</a></h3>
           <h3><a href="https://github.com/bartw/slidux" target="_blank">Fork me</a> on GitHub</h3>
         </div>
@@ -17,3 +17,7 @@ export default class SideBar extends React.Component {
     );
   }
 }
+
+SideBar.propTypes = {
+    isDark: React.PropTypes.bool
+};
