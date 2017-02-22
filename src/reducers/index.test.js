@@ -141,7 +141,7 @@ test('given an action with OPEN_EXPORT type and one slide when slidux then expor
     const state = { slides: [{ content: expectedExported }] };
     const action = { type: OPEN_EXPORT };
     const newState = slidux(state, action);
-    expect(newState.exported).toEqual(expectedExported);
+    expect(newState.export.exported).toEqual(expectedExported);
 });
 
 test('given an action with OPEN_EXPORT type and multiple slides when slidux then exported is filled in correctly', () => {
@@ -151,19 +151,19 @@ test('given an action with OPEN_EXPORT type and multiple slides when slidux then
     const state = { slides: [{ content: content1 }, { content: content2 }] };
     const action = { type: OPEN_EXPORT };
     const newState = slidux(state, action);
-    expect(newState.exported).toEqual(expectedExported);
+    expect(newState.export.exported).toEqual(expectedExported);
 });
 
 test('given an action with OPEN_EXPORT type and no slides when slidux then exported is filled in correctly', () => {
     const state = { slides: [] };
     const action = { type: OPEN_EXPORT };
     const newState = slidux(state, action);
-    expect(newState.exported).toEqual('');
+    expect(newState.export.exported).toEqual('');
 });
 
 test('given an action with CLOSE_EXPORT type when slidux then exported is cleared', () => {
     const state = { };
     const action = { type: CLOSE_EXPORT };
     const newState = slidux(state, action);
-    expect(newState.exported).toEqual('');
+    expect(newState.export.exported).toEqual('');
 });

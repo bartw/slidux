@@ -45,6 +45,7 @@ export const createGist = () => {
             dispatch(createGistNotify('please provide all parameters'));
             return;
         }
+        dispatch(createGistNotify('saving gist'));
         const gh = new GitHub({
             username: state.username,
             password: state.password
