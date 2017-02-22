@@ -10,7 +10,7 @@ export const OPEN_EXPORT = 'OPEN_EXPORT';
 export const CLOSE_EXPORT = 'CLOSE_EXPORT';
 export const UPDATE_USERNAME = 'UPDATE_USERNAME';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
-export const CREATE_GIST_NOTIFY = 'CREATE_GIST_NOTIFY';
+export const EXPORT_NOTIFY = 'EXPORT_NOTIFY';
 export const SWITCH_THEME = 'SWITCH_THEME';
 export const START_PRESENTATION = 'START_PRESENTATION';
 export const STOP_PRESENTATION = 'STOP_PRESENTATION';
@@ -37,15 +37,16 @@ export const previousSlide = () => ({ type: PREVIOUS_SLIDE });
 export const nextSlide = () => ({ type: NEXT_SLIDE });
 export const clear = () => ({ type: CLEAR });
 export const updateImportUrl = (importUrl) => ({ type: UPDATE_IMPORT_URL, importUrl: importUrl });
-const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
+const notifyExport = (text) => ({ type: EXPORT_NOTIFY, notification: text });
 export const createGist = () => {
     return (dispatch, getState) => {
         const state = getState().export;
-        if (!state.username || !state.password || !state.exported) {
-            dispatch(createGistNotify('please provide all parameters'));
+        const exportedSlides = getState().slides.map(slide => slide.content).join('\n\n----------\n\n');
+        if (!state.username || !state.password) {
+            dispatch(notifyExport('please provide username and password'));
             return;
         }
-        dispatch(createGistNotify('saving gist'));
+        dispatch(notifyExport('saving gist'));
         const gh = new GitHub({
             username: state.username,
             password: state.password
@@ -56,14 +57,14 @@ export const createGist = () => {
             description: 'My first gist',
             files: {
                 "file1.txt": {
-                    content: state.exported
+                    content: exportedSlides
                 }
             }
         }).then(data => {
-            dispatch(createGistNotify(data.data.files[Object.keys(data.data.files)[0]].raw_url));
+            dispatch(notifyExport(data.data.files[Object.keys(data.data.files)[0]].raw_url));
             console.log(data);
         }).catch(error => {
-            dispatch(createGistNotify('error'));
+            dispatch(notifyExport('error'));
         });
     };
 };

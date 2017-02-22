@@ -1,17 +1,17 @@
-import { OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, CREATE_GIST_NOTIFY } from '../actions';
+import { OPEN_EXPORT, CLOSE_EXPORT, UPDATE_USERNAME, UPDATE_PASSWORD, EXPORT_NOTIFY } from '../actions';
 
-const exportReducer = (state, action, slides) => {
+const exportReducer = (state, action) => {
     switch (action.type) {
         case OPEN_EXPORT:
-            return { ...state, exported: slides.map(slide => slide.content).join('\n\n----------\n\n') };
+            return { ...state, show: true };
         case CLOSE_EXPORT:
-            return { ...state, exported: '', username: '', password: '', gistUrl: '' };
+            return { ...state, show: false, username: '', password: '', notification: '' };
         case UPDATE_USERNAME:
             return { ...state, username: action.username };
         case UPDATE_PASSWORD:
             return { ...state, password: action.password };
-        case CREATE_GIST_NOTIFY:
-            return { ...state, gistUrl: action.gistUrl };
+        case EXPORT_NOTIFY:
+            return { ...state, notification: action.notification };
         default:
             return state;
     }

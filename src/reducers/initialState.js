@@ -9,7 +9,7 @@ const initialExportState = {
     username: '',
     password: '',
     gistUrl: '',
-    exported: ''
+    show: false
 }
 
 const initialState = (() => {
