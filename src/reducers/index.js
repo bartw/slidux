@@ -1,11 +1,13 @@
 import rootReducer from './rootReducer';
-import presentation from './presentationReducer';
+import presentationReducer from './presentationReducer';
+import exportReducer from './exportReducer';
 import initialState from './initialState';
 
 const slidux = (state = initialState, action) => {
-    let newState = rootReducer(state, action);
-    newState.presentation = presentation(state.presentation, action, state.slides ? state.slides.length : 0);
-    return newState;
+    const rootState = rootReducer(state, action);
+    const presentationState = presentationReducer(state.presentation, action, state.slides ? state.slides.length : 0);
+    const exportState = exportReducer(state.export, action, state.slides);
+    return { ...rootState, presentation: presentationState, export: exportState };
 }
 
 export default slidux;

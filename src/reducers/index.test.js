@@ -2,10 +2,10 @@ import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DO
 import slidux from '.';
 
 test('given an action with unkown type when slidux then the state is returned unchanged', () => {
-    const state = { id: Date.now() };
+    const state = { id: Date.now(), presentation: {}, export: {} };
     const action = { type: 'unknown' };
     const newState = slidux(state, action);
-    expect(newState).toBe(state);
+    expect(newState).toEqual(state);
 });
 
 test('given an action with ADD_SLIDE type when slidux then the new state contains a new slide', () => {

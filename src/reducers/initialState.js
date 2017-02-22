@@ -5,15 +5,20 @@ const initialPresentationState = {
     currentIndex: 0
 };
 
+const initialExportState = {
+    username: '',
+    password: '',
+    gistUrl: '',
+    exported: ''
+}
+
 const initialState = (() => {
     const slide = new Slide();
     return {
         slides: [slide],
         selectedId: slide.id,
-        username: '',
-        password: '',
-        gistUrl: '',
         isDark: true,
+        export: initialExportState,
         presentation: initialPresentationState
     }
 })();

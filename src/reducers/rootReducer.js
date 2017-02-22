@@ -2,6 +2,31 @@ import { ADD_SLIDE, REMOVE_SLIDE, SELECT_SLIDE, UPDATE_CONTENT, MOVE_UP, MOVE_DO
 import Slide from '../models/Slide';
 import initialState from './initialState';
 
+const exportReducer = (state, action) => {
+    switch (action.type) {
+        case OPEN_EXPORT:
+            return { ...state, exported: state.slides.map(slide => slide.content).join('\n\n----------\n\n') };
+        case CLOSE_EXPORT:
+            return { ...state, exported: '', username: '', password: '', gistUrl: '' };
+        case UPDATE_USERNAME:
+            return { ...state, username: action.username };
+        case UPDATE_PASSWORD:
+            return { ...state, password: action.password };
+        case CREATE_GIST_NOTIFY:
+            return { ...state, gistUrl: action.gistUrl };
+        case CREATE_GIST_NOTIFY:
+            if (!action.text) {
+                return { ...initialState };
+            }
+            const slides = action.text.split('\n\n----------\n\n').map((slide, index) => ({ id: index, content: slide }));
+            return { ...initialState, slides: slides };
+        case UPDATE_IMPORT_URL:
+            return { ...state, importUrl: action.importUrl };
+        default:
+            return state;
+    }
+};
+
 const rootReducer = (state, action) => {
     switch (action.type) {
         case ADD_SLIDE:
@@ -31,7 +56,7 @@ const rootReducer = (state, action) => {
             return { ...state, isDark: !state.isDark };
         case CLEAR:
             return { ...initialState };
-        case CREATE_GIST_NOTIFY:
+        case IMPORT_SLIDES_NOTIFY:
             if (!action.text) {
                 return { ...initialState };
             }

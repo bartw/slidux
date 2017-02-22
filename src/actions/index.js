@@ -40,7 +40,7 @@ export const updateImportUrl = (importUrl) => ({ type: UPDATE_IMPORT_URL, import
 const createGistNotify = (text) => ({ type: CREATE_GIST_NOTIFY, gistUrl: text });
 export const createGist = () => {
     return (dispatch, getState) => {
-        const state = getState();
+        const state = getState().export;
         if (!state.username || !state.password || !state.exported) {
             dispatch(createGistNotify('please provide all parameters'));
             return;
