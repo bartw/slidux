@@ -1,25 +1,26 @@
 import React from 'react';
+import './Edit.scss';
 
 export default class Edit extends React.Component {
     render() {
         return (
-            <div id="edit">
-                <div className="formgroup">
+            <div className="edit">
+                <div className="form-group">
                     <textarea placeholder="Content" value={this.props.slideContent} onChange={(e) => this.props.onUpdateContent(e.target.value)} />
                 </div>
-                <div className="formgroup">
-                    <button onClick={e => {
+                <div className="form-group pull-right">
+                    <button className="btn btn-secondary" onClick={e => {
                         e.preventDefault();
                         this.props.onMoveUp();
-                    }}>Move up</button>
-                    <button onClick={e => {
+                    }}><i className="fa fa-arrow-up" aria-hidden="true"></i> Move up</button>
+                    <button className="btn btn-secondary" onClick={e => {
                         e.preventDefault();
                         this.props.onMoveDown();
-                    }}>Move down</button>
-                    <button onClick={e => {
+                    }}><i className="fa fa-arrow-down" aria-hidden="true"></i> Move down</button>
+                    <button className="btn btn-secondary" onClick={e => {
                         e.preventDefault();
                         this.props.onRemove();
-                    }}>Remove</button>
+                    }}><i className="fa fa-times" aria-hidden="true"></i> Remove</button>
                 </div>
             </div>
         );

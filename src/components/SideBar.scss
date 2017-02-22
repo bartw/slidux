@@ -1,5 +1,26 @@
-.tag-line{
-    margin-top: 2px;
-    font-size: 0.9em;
-    padding-left: 80px;
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 350px;
+    border-right: 1px solid rgba(10,10,10, 0.4);
+    box-shadow: 3px 0px 10px rgba(10,10,10, 0.3);
+    box-sizing: border-box;
+
+    & .preview .content {
+        font-size: 0.5rem;
+    }
+
+    .header {
+        padding: 20px;
+        border-bottom: 1px solid rgba(76, 76, 76, 0.22);
+        box-shadow: -2px 4px 5px rgba(23, 23, 23, 0.2);
+
+        .tag-line{
+            margin-top: 2px;
+            font-size: 0.9em;
+            text-align: right;
+        }
+    }
 }
+

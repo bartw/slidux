@@ -1,32 +1,33 @@
 import React from 'react';
+import './SideBarButtons.scss';
 
 export default class SideBarButtons extends React.Component {
   render() {
     return (
-      <div id="sidebarbuttons">
-        <div>
-          <button onClick={e => {
+      <div className="sidebar-buttons">
+        <div className="center">
+          <button className="btn btn-primary" onClick={e => {
             e.preventDefault();
             this.props.onAdd();
-          }}>Add</button>
-          <button onClick={e => {
+          }}><i className="fa fa-plus" aria-hidden="true"></i> Add</button>
+          <button className="btn btn-primary" onClick={e => {
             e.preventDefault();
             this.props.onStartPresentation();
-          }}>Start</button>
-          <button onClick={e => {
+          }}><i className="fa fa-play" aria-hidden="true"></i> Start</button>
+          <button className="btn btn-primary" onClick={e => {
             e.preventDefault();
             this.props.onExport();
-          }}>Export</button>
+          }}><i className="fa fa-external-link" aria-hidden="true"></i> Export</button>
         </div>
-        <div>
-          <button onClick={e => {
+        <div className="center">
+          <button className="btn btn-primary" onClick={e => {
             e.preventDefault();
             this.props.onClear();
-          }}>Clear</button>
-          <button onClick={e => {
+          }}><i className="fa fa-times" aria-hidden="true"></i> Clear All</button>
+          <button className="btn btn-primary" onClick={e => {
             e.preventDefault();
             this.props.onSwitchTheme();
-          }}>Switch theme</button>
+          }}><i className="fa fa-magic" aria-hidden="true"></i> Switch Theme</button>
         </div>
       </div>
     );

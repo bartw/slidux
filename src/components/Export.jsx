@@ -1,4 +1,5 @@
 import React from 'react';
+import './Export.scss';
 
 export default class Export extends React.Component {
     render() {
@@ -6,29 +7,29 @@ export default class Export extends React.Component {
             <div>
                 {
                     this.props.exported &&
-                    <div id="export">
+                    <div className="export">
                         <div>
-                            <div className="formgroup">
+                            <div className="form-group">
                                 <textarea readOnly value={this.props.exported} />
                             </div>
-                            <div className="formgroup">
+                            <div className="form-group">
                                 <input type="text" placeholder="GitHub Username" value={this.props.username} onChange={(e) => this.props.onUpdateUsername(e.target.value)} />
                             </div>
-                            <div className="formgroup">
+                            <div className="form-group">
                                 <input type="password" placeholder="GitHub Password" value={this.props.password} onChange={(e) => this.props.onUpdatePassword(e.target.value)} />
                             </div>
-                            <div className="formgroup">
+                            <div className="form-group">
                                 <input type="text" placeholder="Gist url" value={this.props.gistUrl} readOnly />
                             </div>
-                            <div className="formgroup">
-                                <button onClick={e => {
+                            <div className="form-group pull-right">
+                                <button className="btn btn-secondary" onClick={e => {
                                     e.preventDefault();
                                     this.props.onCreateGist();
-                                }}>Create gist</button>
-                                <button onClick={e => {
+                                }}><i className="fa fa-github-alt" aria-hidden="true"></i> Create gist</button>
+                                <button className="btn btn-secondary" onClick={e => {
                                     e.preventDefault();
                                     this.props.onClose();
-                                }}>Close</button>
+                                }}><i className="fa fa-times" aria-hidden="true"></i> Close</button>
                             </div>
                         </div>
                     </div>

@@ -1,16 +1,17 @@
 import React from 'react';
 import Preview from './Preview';
 import EditContainer from '../containers/EditContainer';
+import './Details.scss';
 
 export default class Details extends React.Component {
   render() {
     return (
-      <div id="detailscontainer">
+      <div className="details-container">
         {
           this.props.slide &&
-          <div id="details">
+          <div className="details">
 
-            <div id="detailspreview">
+            <div className="slide-preview">
               <Preview slide={this.props.slide} />
             </div>
             <EditContainer slide={this.props.slide} />

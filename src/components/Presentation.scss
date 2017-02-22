@@ -1,0 +1,27 @@
+.presentation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+
+    .preview {
+        padding: 10px;
+        
+        .content {
+            font-size: 3rem;
+        }
+    }
+
+    .presentation-buttons{
+        position: fixed;
+        left: calc(50vw - 80px);
+        bottom: 0;
+        padding: 10px;
+    }
+}

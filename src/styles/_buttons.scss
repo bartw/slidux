@@ -1,9 +1,20 @@
 .btn{
-    display: block;
+    display: inline-block;
     text-align: center;
     border-radius: 3px;
-    padding: 4px 12px;
+    padding: 5px 15px;
+    margin: 3px;
     border: 0;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.btn:first-of-type{
+    margin-left: 0;
+}
+
+.btn:last-of-type{
+    margin-right: 0;
 }
 
 .btn-primary{
