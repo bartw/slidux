@@ -6,7 +6,7 @@ export default class Export extends React.Component {
         return (
             <div>
                 {
-                    this.props.exported &&
+                    this.props.show &&
                     <div className="export">
                         <div>
                             <div className="form-group">
@@ -19,7 +19,7 @@ export default class Export extends React.Component {
                                 <input type="password" placeholder="GitHub Password" value={this.props.password} onChange={(e) => this.props.onUpdatePassword(e.target.value)} />
                             </div>
                             <div className="form-group">
-                                <input type="text" placeholder="Gist url" value={this.props.gistUrl} readOnly />
+                                <input type="text" placeholder="Notification" value={this.props.notification} readOnly />
                             </div>
                             <div className="form-group pull-right">
                                 <button className="btn btn-secondary" onClick={e => {
@@ -40,7 +40,8 @@ export default class Export extends React.Component {
 }
 
 Export.propTypes = {
-    exported: React.PropTypes.string,
+    show: React.PropTypes.bool,
+    notification: React.PropTypes.string,
     username: React.PropTypes.string,
     password: React.PropTypes.string,
     onUpdateUsername: React.PropTypes.func.isRequired,

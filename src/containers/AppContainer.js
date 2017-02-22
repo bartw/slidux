@@ -4,7 +4,7 @@ import App from '../components/App';
 const mapStateToProps = (state) => {
     return {
         isDark: state.isDark,
-        showPresentation: state.showPresentation
+        showPresentation: state.presentation.show
     };
 };
 

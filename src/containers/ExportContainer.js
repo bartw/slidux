@@ -4,10 +4,11 @@ import Export from '../components/Export';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        exported: state.exported,
-        username: state.username,
-        password: state.password,
-        gistUrl: state.gistUrl
+        show: state.export.show,
+        exported: state.slides.map(slide => slide.content).join('\n\n----------\n\n'),
+        username: state.export.username,
+        password: state.export.password,
+        notification: state.export.notification,
     };
 };
 
