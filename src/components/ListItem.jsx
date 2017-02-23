@@ -1,10 +1,11 @@
 import React from 'react';
 import Preview from './Preview';
+import './ListItem.scss';
 
 export default class ListItem extends React.Component {
   render() {
     return (
-      <li className="listitem" onClick={e => {
+      <li className="list-item" onClick={e => {
         e.preventDefault();
         this.props.onClick();
       }}>

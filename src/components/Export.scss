@@ -1,0 +1,40 @@
+.export {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > div {
+        width: 75%;
+        padding: 50px;
+        box-sizing: border-box;
+        border: 1px solid rgba(42, 116, 81, 0.84);
+        box-shadow: 0px 0px 25px #252526;
+        background-color: white;
+    }
+
+    textarea {
+        height: 400px;
+        margin-bottom: 10px;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background-color: rgba(42, 116, 81, 0.27);
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #2a7451;
+            border-radius: 2px;
+        }
+    }
+}

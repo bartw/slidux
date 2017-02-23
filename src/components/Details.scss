@@ -1,0 +1,21 @@
+.details-container {
+    height: 100%;
+    width: 100%;
+
+    .details{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;    
+
+        .slide-preview{
+            flex-grow: 1;
+            padding: 0 20px;
+            overflow: hidden;
+
+            .preview .content{
+                font-size: 3rem;
+            }
+        }
+    }
+}
