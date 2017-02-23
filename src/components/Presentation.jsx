@@ -31,15 +31,15 @@ export default class Presentation extends React.Component {
                 <div className="presentation" ref="presentation" tabIndex="0">
                     {this.props.slide && <Preview slide={this.props.slide} />}
                     <div className="presentation-buttons">
-                        <button className="btn btn-primary" onClick={e => {
+                        <button className="btn btn-primary" title="left" onClick={e => {
                             e.preventDefault();
                             this.props.onPreviousSlide();
                         }}><i className="fa fa-chevron-left" aria-hidden="true"></i></button>
-                        <button className="btn btn-primary" onClick={e => {
+                        <button className="btn btn-primary" title="right" onClick={e => {
                             e.preventDefault();
                             this.props.onNextSlide();
                         }}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>
-                        <button className="btn btn-primary" onClick={e => {
+                        <button className="btn btn-primary" title="esc" onClick={e => {
                             e.preventDefault();
                             this.props.onStopPresentation();
                         }}><i className="fa fa-stop" aria-hidden="true"></i></button>
