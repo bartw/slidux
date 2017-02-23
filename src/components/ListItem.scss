@@ -6,4 +6,17 @@
     padding: 5px;
     margin: 2px;
     box-sizing: border-box;
+    position: relative;
+
+    .selected{
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0.8em 0.8em 0;
+        border-color: transparent rgba(36, 158, 77, 0.25) transparent transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
