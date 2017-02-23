@@ -10,6 +10,7 @@ export default class ListItem extends React.Component {
         this.props.onClick();
       }}>
         <Preview slide={this.props.slide} />
+        {this.props.isSelected && <span className="selected"></span>}
       </li>
     );
   }
@@ -20,5 +21,6 @@ ListItem.propTypes = {
     id: React.PropTypes.number.isRequired,
     content: React.PropTypes.string.isOptional,
   }).isRequired,
+  isSelected: React.PropTypes.bool.isRequired,
   onClick: React.PropTypes.func.isRequired
 };
